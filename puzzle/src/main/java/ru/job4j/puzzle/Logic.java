@@ -68,9 +68,37 @@ public class Logic {
         return rst;
     }
 
+    public static boolean HorizontalWin(int[][] board, int row) {
+        boolean result = true;
+        for (int column = 0; column < board.length; column++) {
+            if (board[row][column] != 1) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static boolean VerticalWin(int[][] board, int column) {
+        boolean result = true;
+        for (int row = 0; row < board.length; row++) {
+            if (board[row][column] != 1) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
+        for (int i = 0; i < table.length; i++) {
+            if (HorizontalWin(table, i) | VerticalWin(table, i)) {
+                    result = true;
+                    break;
+            }
+        }
         return result;
     }
 
